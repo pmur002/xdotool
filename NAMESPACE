@@ -1,0 +1,14 @@
+
+export("keystroke",
+       "keydown",
+       "keyup",
+       "typestring",
+
+       "mousemove",
+       "mousemovePolar",
+       "mousemoveRel",
+       "mousemoveRelPolar",
+       "click",
+       "mousedown",
+       "mouseup")
+

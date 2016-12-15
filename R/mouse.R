@@ -49,7 +49,9 @@ mousemoveRelPolar <- function(theta, distance, clearmodifiers=FALSE, sync=FALSE)
 
 mouseAction <- function(action, button, rep, delay, clearmodifiers) {
     cmd <- action
-    cmd <- paste0(cmd, "--repeat ", rep, " ")
+    if (!is.null(rep)) {
+        cmd <- paste0(cmd, "--repeat ", rep, " ")
+    }
     if (!is.null(delay)) {
         cmd <- paste0(cmd, "--delay ", delay, " ")
     }
@@ -64,10 +66,10 @@ click <- function(button, rep=1, delay=NULL, clearmodifiers=FALSE) {
     mouseAction("click ", button, rep, delay, clearmodifiers)
 }
 
-mousedown <- function(button, rep=1, delay=NULL, clearmodifiers=FALSE) {
-    mouseAction("mousedown ", button, rep, delay, clearmodifiers)
+mousedown <- function(button, clearmodifiers=FALSE) {
+    mouseAction("mousedown ", button, NULL, NULL, clearmodifiers)
 }
 
-mouseup <- function(button, rep=1, delay=NULL, clearmodifiers=FALSE) {
-    mouseAction("mouseup ", button, rep, delay, clearmodifiers)
+mouseup <- function(button, clearmodifiers=FALSE) {
+    mouseAction("mouseup ", button, NULL, NULL, clearmodifiers)
 }

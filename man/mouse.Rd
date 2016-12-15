@@ -18,8 +18,8 @@ mousemovePolar(theta, distance, clearmodifiers = FALSE, sync = FALSE)
 mousemoveRel(x, y, clearmodifiers = FALSE, sync = FALSE)
 mousemoveRelPolar(theta, distance, clearmodifiers = FALSE, sync = FALSE)
 click(button, rep=1, delay=NULL, clearmodifiers=FALSE)
-mousedown(button, rep=1, delay=NULL, clearmodifiers=FALSE)
-mouseup(button, rep=1, delay=NULL, clearmodifiers=FALSE)
+mousedown(button, clearmodifiers=FALSE)
+mouseup(button, clearmodifiers=FALSE)
 }
 \arguments{
   \item{x}{

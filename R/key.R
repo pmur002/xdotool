@@ -32,9 +32,33 @@ keyup <- function(key) {
 }
 
 ## Can handle multiple values, in which case 'delay' is recycled
-typestring <- function(string, delay=NULL, clearmodifiers=FALSE, sep="\n") {
+typestring <- function(string, delay=NULL, indentDelay=FALSE,
+                       clearmodifiers=FALSE, sep="\n") {
     if (!is.null(delay)) {
         delay <- rep(pmin(delay, 1000), length.out=length(string))
+    }
+    ## if !indentDelay, just type white space at the start immediately
+    if (!indentDelay) {
+        ## Split strings into separate lines
+        strings <- strsplit(string, "\n")
+        new <- mapply(
+            function(s, d) {
+                ## Put new lines back
+                if (length(s) > 1)
+                    s[-length(s)] <- paste0(s[-length(s)], "\n")
+                whiteStart <- grepl("^[[:blank:]]+", s)
+                if (any(whiteStart)) {
+                    whites <- gsub("^([[:blank:]]*).+", "\\1", s)
+                    rest <- gsub("^[[:blank:]]+", "", s)
+                    list(strings=as.character(rbind(whites, rest)),
+                         delays=rep(c(1, d), length(s)))
+                } else {
+                    list(strings=s, delays=d)
+                }
+            },
+            strings, delay, SIMPLIFY=FALSE)
+        string <- unlist(lapply(new, function(x) x$strings))
+        delay <- unlist(lapply(new, function(x) x$delays))
     }
     for (i in seq_along(string)) {
         cmd <- "type "

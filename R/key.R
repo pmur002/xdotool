@@ -41,11 +41,14 @@ typestring <- function(string, delay=NULL, indentDelay=FALSE,
     if (!indentDelay) {
         ## Split strings into separate lines
         strings <- strsplit(string, "\n")
+        ## Put new lines back
+        if (grepl("\n$", string))
+            strings <- lapply(strings, paste0, "\n")
+        else
+            strings[-length(strings)] <-
+                lapply(strings[-length(strings)], paste0, "\n")            
         new <- mapply(
             function(s, d) {
-                ## Put new lines back
-                if (length(s) > 1)
-                    s[-length(s)] <- paste0(s[-length(s)], "\n")
                 whiteStart <- grepl("^[[:blank:]]+", s)
                 if (any(whiteStart)) {
                     whites <- gsub("^([[:blank:]]*).+", "\\1", s)

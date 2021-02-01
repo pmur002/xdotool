@@ -10,5 +10,7 @@ export("keystroke",
        "mousemoveRelPolar",
        "click",
        "mousedown",
-       "mouseup")
+       "mouseup",
+
+       "windowWithFocus")
 

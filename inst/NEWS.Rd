@@ -7,5 +7,7 @@
     \item Add \code{indentDelay} to \code{typeString()}, which is
     \code{FALSE} by default, to emulate white space at start of
     a line WITHOUT delay.
+
+    \item Add \code{windowWithFocus} function.
   }
 }

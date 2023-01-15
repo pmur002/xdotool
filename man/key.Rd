@@ -13,7 +13,7 @@
 keystroke(key, delay = NULL, clearmodifiers = FALSE)
 keydown(key, clearmodifiers = FALSE)
 keyup(key)
-typestring(string, delay = NULL, clearmodifiers = FALSE, sep = "\n")
+typestring(string, delay = 12, clearmodifiers = FALSE, sep = "\n")
 }
 \arguments{
   \item{key}{
@@ -25,7 +25,6 @@ typestring(string, delay = NULL, clearmodifiers = FALSE, sep = "\n")
   }
   \item{delay}{
     The delay between keystrokes (in milliseconds).
-    Default (\code{NULL}) means 12 milliseconds.
     Maximum value is 1000.  A very small delay (e.g., 0) may
     not produce all keys.
   }

@@ -32,11 +32,9 @@ keyup <- function(key) {
 }
 
 ## Can handle multiple values, in which case 'delay' is recycled
-typestring <- function(string, delay=NULL, indentDelay=FALSE,
+typestring <- function(string, delay=12, indentDelay=FALSE,
                        clearmodifiers=FALSE, sep="\n") {
-    if (!is.null(delay)) {
-        delay <- rep(pmin(delay, 1000), length.out=length(string))
-    }
+    delay <- rep(pmin(delay, 1000), length.out=length(string))
     ## if !indentDelay, just type white space at the start immediately
     if (!indentDelay) {
         ## Split strings into separate lines
